@@ -1,0 +1,29 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Установка clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Проверка форматирования кода
+        run: |
+          find . -type f \( -name '*.hpp' -o -name '*.cpp' \) \
+            -not -path './build/*' \
+            -not -path './cmake-build-*/*' \
+            -exec clang-format --dry-run --Werror --style=file {} +
+
+      - name: Конфигурация cmake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=g++
+
+      - name: Сборка проекта
+        run: cmake --build build --parallel
+
+      - name: Тестирование проекта
+        run: ctest --test-dir build --output-on-failure
