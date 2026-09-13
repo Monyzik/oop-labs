@@ -10,7 +10,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Установка clang-format
-        run: sudo apt-get update && sudo apt-get install -y clang-format
+        uses: aminya/setup-cpp@v1
+        with:
+          clang-format: 20
 
       - name: Проверка форматирования кода
         run: |
