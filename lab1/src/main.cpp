@@ -1,9 +1,8 @@
-#include "lab1/array_ops.hpp"
-#include "lab1/io/io.hpp"
-
 #include <iostream>
 #include <ostream>
 
+#include "lab1/array_ops.hpp"
+#include "lab1/io/io.hpp"
 
 signed main() {
     int* array{nullptr};
