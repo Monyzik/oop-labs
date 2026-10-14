@@ -7,8 +7,7 @@
 #include <stdexcept>
 
 namespace lab2 {
-    String::String() : data_(new char[2]{}), capacity_(1), size_(0) {
-    }
+    String::String() : data_(new char[2]{}), capacity_(1), size_(0) {}
 
     String::String(const char* str) : String() {
         if (str == nullptr) {
@@ -49,7 +48,7 @@ namespace lab2 {
     void String::Swap(String& other) noexcept {
         std::swap(data_, other.data_);
         std::swap(size_, other.size_);
-        std::swap(capacity_, other.capacity_);\
+        std::swap(capacity_, other.capacity_);
     }
 
     String& String::operator=(String other) {
@@ -103,7 +102,9 @@ namespace lab2 {
 
     void String::Append(const String& str) {
         const std::size_t suf_size = str.size();
-        if (suf_size == 0) return;
+        if (suf_size == 0) {
+            return;
+        }
         IncreaseCapacity(size_ + suf_size);
         std::memmove(data_ + size_, str.data_, suf_size);
         size_ += suf_size;
@@ -164,7 +165,6 @@ namespace lab2 {
         }
     }
 
-
     std::ostream& operator<<(std::ostream& out, const String& s) {
         return out.write(s.c_str(), static_cast<std::streamsize>(s.size()));
     }
@@ -195,4 +195,4 @@ namespace lab2 {
 
         return in;
     }
-}
+}  // namespace lab2

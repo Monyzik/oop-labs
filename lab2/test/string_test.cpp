@@ -2,7 +2,6 @@
 
 #include "gtest/gtest.h"
 
-
 TEST(StringTest, CreateEmptyString) {
     lab2::String value;
 
@@ -182,9 +181,6 @@ TEST(StringTest_Throw, NullPointerArgument) {
     std::size_t counts[1]{};
     std::size_t out_size{10};
 
-    EXPECT_THROW(
-        value.WordHistogram(nullptr, counts, out_size),
-        std::invalid_argument
-    );
+    EXPECT_THROW(value.WordHistogram(nullptr, counts, out_size), std::invalid_argument);
     EXPECT_EQ(out_size, 0);
 }

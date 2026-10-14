@@ -1,7 +1,7 @@
-#include "string.hpp"
-
 #include <exception>
 #include <iostream>
+
+#include "string.hpp"
 
 int main() {
     lab2::String* words{nullptr};
@@ -30,12 +30,12 @@ int main() {
             std::cout << words[i] << ": " << counts[i] << '\n';
         }
     } catch (const std::exception& e) {
-        delete [] counts;
-        delete [] words;
+        delete[] counts;
+        delete[] words;
         std::cerr << e.what() << '\n';
         return 1;
     }
-    delete [] counts;
-    delete [] words;
+    delete[] counts;
+    delete[] words;
     return 0;
 }

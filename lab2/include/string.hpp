@@ -16,7 +16,6 @@ namespace lab2 {
 
         void Swap(String& other) noexcept;
 
-
         std::size_t capacity() const noexcept;
         std::size_t size() const noexcept;
         const char* c_str() const noexcept;
@@ -31,7 +30,6 @@ namespace lab2 {
     private:
         void IncreaseCapacity(std::size_t new_capacity);
 
-
         char* data_{nullptr};
 
         std::size_t capacity_{0};
@@ -41,4 +39,4 @@ namespace lab2 {
     std::ostream& operator<<(std::ostream& out, const String& s);
 
     std::istream& operator>>(std::istream& in, String& s);
-}
+}  // namespace lab2
